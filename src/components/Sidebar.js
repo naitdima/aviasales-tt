@@ -75,12 +75,12 @@ class Sidebar extends React.Component {
   render() {
     return (
       <form className='sidebar'>
-        <fieldset>
-          <legend>Валюта</legend>
+        <fieldset className='sidebar__fieldset'>
+          <legend className='sidebar__legend'>Валюта</legend>
           {this.renderCheckboxList(this.state.currencyData)};
         </fieldset>
-        <fieldset>
-          <legend>Количество пересадок</legend>
+        <fieldset className='sidebar__fieldset'>
+          <legend className='sidebar__legend'>Количество пересадок</legend>
           {this.renderCheckboxList(this.state.transferData)};
         </fieldset>
       </form>

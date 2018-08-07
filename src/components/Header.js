@@ -5,7 +5,7 @@ class Header extends React.Component {
     return (
       <header className='page-header'>
         <a href='#main'>
-          <img className='page-header__logo' src='../img/logo.svg'/>
+          <img className='page-header__logo' src='../img/logo.svg' alt='logo'/>
         </a>
       </header>
     )
