@@ -8,7 +8,9 @@ class Tickets extends React.Component {
     let ticketsList = null;
 
     if (data.length) {
-      ticketsList = data.map(function (item) {
+      ticketsList = data.sort(function(a, b) {
+        return a.price - b.price
+      }).map(function (item) {
         return <Ticket key={item.price} data={item}/>
       })
     } else {
