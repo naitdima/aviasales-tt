@@ -59,7 +59,12 @@ class Sidebar extends React.Component {
   createRadioItem = (item, name) => {
     return (
       <label key={item.id} className={item.class}>
-        <input className='visually-hidden' type="radio" name={name} value={item.value}/>
+        <input
+          className='visually-hidden'
+          type="radio" name={name}
+          value={item.value}
+          defaultChecked={item.id === 1 ? true : false}
+        />
         {item.text}
       </label>
     )
@@ -75,7 +80,11 @@ class Sidebar extends React.Component {
   createCheckboxItem = (item) => {
     return (
       <label key={item.id} className={item.class}>
-        <input className='visually-hidden' type="checkbox" name={item.value}/>
+        <input
+          className='visually-hidden'
+          type="checkbox"
+          name={item.value}
+        />
         {item.text}
       </label>
     )
