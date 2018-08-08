@@ -33,7 +33,6 @@ class App extends React.Component {
         <Sidebar/>
         {isLoading && <p>Загружаю...</p>}
         {Array.isArray(tickets) && <Tickets data={tickets}/>}
-        {console.log(tickets)}
       </div>
     );
   }

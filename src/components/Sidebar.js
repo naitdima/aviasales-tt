@@ -56,6 +56,22 @@ class Sidebar extends React.Component {
     ]
   };
 
+  createRadioItem = (item, name) => {
+    return (
+      <label key={item.id} className={item.class}>
+        <input className='visually-hidden' type="radio" name={name} value={item.value}/>
+        {item.text}
+      </label>
+    )
+  };
+
+  renderRadioList = (data, name) => {
+    let currencyList = data.map((item) => {
+      return this.createRadioItem(item, name);
+    });
+    return currencyList
+  };
+
   createCheckboxItem = (item) => {
     return (
       <label key={item.id} className={item.class}>
@@ -77,7 +93,7 @@ class Sidebar extends React.Component {
       <form className='sidebar'>
         <fieldset className='sidebar__fieldset'>
           <legend className='sidebar__legend'>Валюта</legend>
-          {this.renderCheckboxList(this.state.currencyData)};
+          {this.renderRadioList(this.state.currencyData, 'currency')};
         </fieldset>
         <fieldset className='sidebar__fieldset'>
           <legend className='sidebar__legend'>Количество пересадок</legend>
