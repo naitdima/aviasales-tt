@@ -1,18 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import Tickets from './components/Tickets'
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
+
+  state = {
+    tickets: null,
+    isLoading: false
+  };
+
+  componentDidMount() {
+    this.setState({isLoading: true});
+    fetch('http://localhost:3000/data/tickets.json')
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      setTimeout(() => {
+        this.setState({isLoading: false, tickets: data})
+      }, 1000)
+    })
+  }
+
   render() {
+    const {tickets, isLoading} = this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='app'>
+        <Header/>
+        <Sidebar/>
+        {isLoading && <p>Загружаю...</p>}
+        {Array.isArray(tickets) && <Tickets data={tickets}/>}
+        {console.log(tickets)}
       </div>
     );
   }
