@@ -11,10 +11,10 @@ class Sidebar extends React.Component {
   };
 
   toggleCheckbox = (e) => {
-    const stopName = e.target.name;
+    const stateKey = e.target.name;
     this.setState(
       {
-        [`${stopName}`]: !this.state[`${stopName}`]
+        [`${stateKey}`]: !this.state[`${stateKey}`]
       }
     );
   };
