@@ -1,24 +1,10 @@
 import React from 'react'
 
 export default class Sidebar extends React.Component {
-
-  state = {
-    currency: 'rub',
-    all: false,
-    none: false,
-    one: false,
-    two: false,
-    three: false
-  };
-
-  toggleCheckbox = (e) => {
-    const stateKey = e.target.name;
-    this.setState(
-      {
-        [`${stateKey}`]: !this.state[`${stateKey}`]
-      }
-    );
-  };
+  constructor(props) {
+    super(props);
+    this.toggleCheckbox = this.toggleCheckbox.bind(this);
+  }
 
   currencyData = [
     {
@@ -81,18 +67,17 @@ export default class Sidebar extends React.Component {
           className='visually-hidden'
           type="radio" name={name}
           value={item.value}
-          defaultChecked={item.id === 1 ? true : false}
+          defaultChecked={item.id === 1}
         />
         {item.text}
       </label>
     )
   };
 
-  renderRadioList(data, name) {
-    let currencyList = data.map((item) => {
+  renderRadioList (data, name) {
+    return data.map((item) => {
       return this.createRadioItem(item, name);
     });
-    return currencyList
   };
 
   createCheckboxItem(item) {
@@ -103,6 +88,7 @@ export default class Sidebar extends React.Component {
           type="checkbox"
           name={item.value}
           onChange={this.toggleCheckbox}
+          // checked={this.props.stops[item.value]}
         />
         {item.text}
       </label>
@@ -110,10 +96,13 @@ export default class Sidebar extends React.Component {
   };
 
   renderCheckboxList(data) {
-    let currencyList = data.map((item) => {
+    return data.map((item) => {
       return this.createCheckboxItem(item);
     });
-    return currencyList
+  };
+
+  toggleCheckbox(e) {
+    this.props.onToggleCheckbox(e)
   };
 
   render() {
