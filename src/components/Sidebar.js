@@ -1,6 +1,7 @@
 import React from 'react'
 
-class Sidebar extends React.Component {
+export default class Sidebar extends React.Component {
+
   state = {
     currency: 'rub',
     all: false,
@@ -130,5 +131,3 @@ class Sidebar extends React.Component {
     );
   }
 }
-
-export default Sidebar;
