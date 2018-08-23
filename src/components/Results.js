@@ -5,12 +5,22 @@ import Tickets from './Tickets'
 export default class Results extends React.Component {
   constructor(props) {
     super(props);
+    this.onToggleRadio = this.onToggleRadio.bind(this);
     this.onToggleCheckbox = this.onToggleCheckbox.bind(this);
     this.state = {
-      currency: 'rub',
+      currency: 'rubles',
       stops: []
     };
   }
+
+  onToggleRadio(e) {
+    const currency = e.target.value;
+    this.setState(
+      {
+        currency: currency
+      }
+    );
+  };
 
   onToggleCheckbox(e) {
     const checked = e.target.checked;
@@ -44,7 +54,7 @@ export default class Results extends React.Component {
 
     return (
       <section className='results'>
-        <Sidebar onToggleCheckbox={this.onToggleCheckbox}/>
+        <Sidebar onToggleRadio={this.onToggleRadio} onToggleCheckbox={this.onToggleCheckbox}/>
         {isLoading && <p>Загружаю...</p>}
         {Array.isArray(data) && <Tickets currency={currency} stops={stops} data={data}/>}
       </section>

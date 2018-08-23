@@ -7,8 +7,8 @@ export default class Tickets extends React.Component {
     super(props);
   }
 
-  sortByPrice = (a, b) => {
-    return a.price - b.price
+  sortByPrice = (a, b, currency) => {
+    return a.price[currency] - b.price[currency]
   };
 
   filterByStops = (item, stops) => {
@@ -34,22 +34,23 @@ export default class Tickets extends React.Component {
     return true
   };
 
-  sortTickets = (data, stops) => {
+  sortTickets = (data, currency, stops) => {
     if (data.length) {
       return data.sort((a, b) => {
-            return this.sortByPrice(a, b)
+            return this.sortByPrice(a, b, currency)
           }).filter((item) => {
-            return this.filterByStops(item, stops)
+        return this.filterByStops(item, stops)
           })
     }
     return data
   };
 
   renderTickets = () => {
-    const data = this.sortTickets(this.props.data, this.props.stops);
+    const currency = this.props;
+    const data = this.sortTickets(this.props.data, this.props.currency, this.props.stops);
     if (data.length) {
       return data.map(function (item) {
-            return <Ticket key={item.price} data={item}/>
+            return <Ticket key={item.id} data={item} currency={currency}/>
           })
     } else {
       return <p>К сожалению подходящих билетов нет</p>

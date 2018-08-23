@@ -3,6 +3,7 @@ import React from 'react'
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.toggleRadio = this.toggleRadio.bind(this);
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
   }
 
@@ -68,6 +69,7 @@ export default class Sidebar extends React.Component {
           type="radio" name={name}
           value={item.value}
           defaultChecked={item.id === 1}
+          onChange={this.toggleRadio}
         />
         {item.text}
       </label>
@@ -98,6 +100,10 @@ export default class Sidebar extends React.Component {
     return data.map((item) => {
       return this.createCheckboxItem(item);
     });
+  };
+
+  toggleRadio(e) {
+    this.props.onToggleRadio(e)
   };
 
   toggleCheckbox(e) {

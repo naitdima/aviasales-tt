@@ -16,12 +16,22 @@ class Ticket extends React.Component {
       stops,
       price
     } = this.props.data;
+    const {currency} = this.props.currency;
+
+    const getPrice = (price, currency) => {
+      if (currency === 'dollars') {
+        return price.dollars + '\u0024'
+      } else if (currency === 'euro') {
+        return price.euro + '\u20AC'
+      }
+      return price.rubles + '\u20BD'
+    };
 
     return (
       <article className='ticket'>
         <section className='ticket__buy-section'>
           <img className='ticket__logo' src={'../img/' + carrier + '.png'} alt={carrier}/>
-          <a className='ticket__buy-btn' href='#buy'>Купить за {price}&#8381;</a>
+          <a className='ticket__buy-btn' href='#buy'>Купить за {getPrice(price, currency)}</a>
         </section>
         <section className='ticket__info-section'>
           <div className='ticket__info-departure'>
