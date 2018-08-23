@@ -38,25 +38,25 @@ export default class Sidebar extends React.Component {
       id: 2,
       class: 'sidebar__stops-label',
       text: 'Без пересадок',
-      value: 'none'
+      value: 0
     },
     {
       id: 3,
       class: 'sidebar__stops-label',
       text: '1 пересадка',
-      value: 'one'
+      value: 1
     },
     {
       id: 4,
       class: 'sidebar__stops-label',
       text: '2 пересадки',
-      value: 'two'
+      value: 2
     },
     {
       id: 5,
       class: 'sidebar__stops-label',
       text: '3 пересадки',
-      value: 'three'
+      value: 3
     }
   ];
 
@@ -88,7 +88,6 @@ export default class Sidebar extends React.Component {
           type="checkbox"
           name={item.value}
           onChange={this.toggleCheckbox}
-          // checked={this.props.stops[item.value]}
         />
         {item.text}
       </label>

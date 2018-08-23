@@ -7,8 +7,6 @@ export default class Results extends React.Component {
     super(props);
     this.onToggleCheckbox = this.onToggleCheckbox.bind(this);
     this.state = {
-      tickets: null,
-      isLoading: false,
       currency: 'rub',
       stops: []
     };
@@ -40,27 +38,15 @@ export default class Results extends React.Component {
     );
   };
 
-  componentDidMount() {
-    this.setState({isLoading: true});
-    fetch('http://localhost:3000/data/tickets.json')
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {
-      setTimeout(() => {
-        this.setState({isLoading: false, tickets: data})
-      }, 1000)
-    })
-  }
-
   render() {
-    const {tickets, isLoading, currency, stops} = this.state;
+    const {currency, stops} = this.state;
+    const {data, isLoading} = this.props;
 
     return (
       <section className='results'>
-        <Sidebar currency={currency} stops={stops} onToggleCheckbox={this.onToggleCheckbox}/>
+        <Sidebar onToggleCheckbox={this.onToggleCheckbox}/>
         {isLoading && <p>Загружаю...</p>}
-        {Array.isArray(tickets) && <Tickets data={tickets}/>}
+        {Array.isArray(data) && <Tickets currency={currency} stops={stops} data={data}/>}
       </section>
     )
   }
