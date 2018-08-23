@@ -1,14 +1,12 @@
 import React from 'react'
 import Header from './components/Header'
-import Sidebar from './components/Sidebar'
-import Tickets from './components/Tickets'
+import Results from './components/Results'
 import './App.css';
 
 class App extends React.Component {
-
   state = {
     tickets: null,
-    isLoading: false
+    isLoading: false,
   };
 
   componentDidMount() {
@@ -25,15 +23,11 @@ class App extends React.Component {
   }
 
   render() {
-    const {tickets, isLoading} = this.state;
-
+    const data = this.state.tickets;
     return (
       <div className='app'>
         <Header/>
-        <Sidebar/>
-        {isLoading && <p>Загружаю...</p>}
-        {Array.isArray(tickets) && <Tickets data={tickets}/>}
-        {console.log(tickets)}
+        <Results isLoading={this.state.isLoading} data={data}/>
       </div>
     );
   }

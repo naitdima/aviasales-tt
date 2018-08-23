@@ -20,7 +20,7 @@ class Ticket extends React.Component {
     return (
       <article className='ticket'>
         <section className='ticket__buy-section'>
-          <img className='ticket__logo' src={'../img/' + carrier.toString() + '.png'} alt={carrier.toString()}/>
+          <img className='ticket__logo' src={'../img/' + carrier + '.png'} alt={carrier}/>
           <a className='ticket__buy-btn' href='#buy'>Купить за {price}&#8381;</a>
         </section>
         <section className='ticket__info-section'>
