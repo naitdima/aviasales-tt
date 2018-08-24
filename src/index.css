@@ -47,7 +47,7 @@ img {
   display: flex;
   justify-content: center;
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 46px;
 }
 
 .page-header__logo {
@@ -78,7 +78,7 @@ img {
 .sidebar__fieldset {
   width: 100%;
   margin: 0;
-  margin-bottom: 30px;
+  margin-bottom: 29px;
   padding: 0;
 
   border: none;
@@ -89,7 +89,7 @@ img {
 }
 
 .sidebar__legend {
-  margin-bottom: 10px;
+  margin-bottom: 11px;
   padding: 0;
   padding-right: 15px;
   padding-left: 15px;
@@ -98,6 +98,10 @@ img {
   line-height: 19px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.sidebar__legend--stops {
+  margin-bottom: 8px;
 }
 
 .sidebar__currency-wrap {
@@ -109,11 +113,16 @@ img {
 
 .sidebar__currency-label {
   width: 68px;
-  padding: 10px 20px;
+  padding-top: 9px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+  padding-left: 20px;
 
+  font-size: 12px;
+  line-height: 22px;
   text-align: center;
 
-  border: #d2d5d6 1px solid;
+  border: 1px solid #d2d5d6;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -125,7 +134,8 @@ input[type="radio"]:checked + label.sidebar__currency-label {
   border: none;
 }
 
-.sidebar__currency-label:hover {
+.sidebar__currency-label:hover,
+.sidebar__currency-label:active {
   background-color: #f2fcff;
   border-color: #64b5f5;
 }
@@ -157,7 +167,7 @@ input[type="radio"]:checked + label.sidebar__currency-label {
   position: relative;
 
   display: block;
-  padding-top: 8px;
+  padding-top: 7px;
   padding-right: 15px;
   padding-bottom: 8px;
   padding-left: 45px;
@@ -168,7 +178,8 @@ input[type="radio"]:checked + label.sidebar__currency-label {
   cursor: pointer;
 }
 
-.sidebar__stops-label:hover {
+.sidebar__stops-label:hover,
+.sidebar__stops-label:active {
   background-color: #f1fcff;
 }
 
@@ -176,10 +187,10 @@ input[type="radio"]:checked + label.sidebar__currency-label {
   content: "";
   position: absolute;
   top: 8px;
-  left: 15px;
+  left: 16px;
 
   width: 20px;
-  height: 20px;
+  height: 19px;
 
   border: 1px solid #d2d5d6;
   border-radius: 3px;
@@ -224,7 +235,7 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
   position: relative;
 
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 21px;
 
   background-color: #ffffff;
   border-radius: 5px;
@@ -251,7 +262,10 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
   display: block;
   width: 160px;
   padding: 5px 10px;
+  padding-bottom: 12px;
 
+  font-size: 16px;
+  line-height: 19px;
   text-align: center;
   color: #ffffff;
 
@@ -260,7 +274,8 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
   box-shadow: #d64d08 0 1px 0 0, #000000 0 2px 1px 0;
 }
 
-.ticket__buy-btn:hover {
+.ticket__buy-btn:hover,
+.ticket__buy-btn:active {
   background-color: #ff8124;
   box-shadow: #d64d08 0 1px 0 0, #000000 0 1px 5px 0;
 }
@@ -290,7 +305,7 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
 
 .ticket__info-time {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 
   font-size: 32px;
   line-height: 26px;
@@ -340,23 +355,23 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
 
 .ticket__info-stops {
   position: absolute;
-  top: 25px;
+  top: 26px;
   left: 50%;
 
   width: 110px;
 
-  transform: translateX(50%);
+  transform: translateX(38%);
 }
 
 .ticket__info-stops-text {
-  display: block;
-  min-height: 24px;
   position: relative;
 
+  display: block;
+  min-height: 24px;
   margin: 0;
 
   font-size: 10px;
-  line-height: 12px;
+  line-height: 13px;
   text-align: center;
   color: #8b9497;
   text-transform: uppercase;
@@ -365,7 +380,7 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
 .ticket__info-stops-text::before {
   content: "";
   position: absolute;
-  bottom: 5px;
+  bottom: 6px;
   left: 0;
 
   width: 96px;
@@ -377,12 +392,211 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
 .ticket__info-stops-text::after {
   content: "";
   position: absolute;
-  right: 0;
-  bottom: -2px;
+  right: -2px;
+  bottom: -1px;
 
   width: 13px;
   height: 14px;
 
   background-image: url("/img/plane.svg");
   background-repeat: no-repeat;
+}
+
+@media (max-width: 900px) {
+  .results {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 566px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar__fieldset {
+    width: 50%;
+    margin: 0;
+  }
+
+  .sidebar__legend--currency {
+    margin-bottom: 17px;
+  }
+
+  .sidebar__currency-wrap {
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .sidebar__currency-label {
+    width: 100%;
+
+    border: 1px solid #d2d5d6;
+    border-radius: 0;
+  }
+
+  .sidebar__currency-label:nth-child(2) {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .sidebar__currency-label:last-child {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .results {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  .sidebar {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 280px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar__fieldset {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .sidebar__legend--currency {
+    margin-bottom: 10px;
+  }
+
+  .sidebar__currency-wrap {
+    flex-direction: row;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .sidebar__currency-label:nth-child(2) {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 0;
+  }
+
+  .sidebar__currency-label:last-child {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0;
+  }
+
+  .sidebar__currency-label {
+    width: 68px;
+    padding-top: 9px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    padding-left: 20px;
+
+    border: 1px solid #d2d5d6;
+    border-radius: 5px;
+  }
+
+  .sidebar__currency-label--first-col {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .sidebar__currency-label--second-col {
+    border-radius: 0;
+  }
+
+  .sidebar__currency-label--third-col {
+    border: #d2d5d6 1px solid;
+    border-left: 0;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .tickets-list {
+    width: 280px;
+  }
+
+  .ticket {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
+
+  .ticket__buy-section {
+    width: 100%;
+    padding: 0 10px;
+
+    border-right: none;
+  }
+
+  .ticket__logo {
+    margin-bottom: 15px;
+  }
+
+  .ticket__buy-btn {
+    width: 160px;
+    padding: 8px 10px;
+  }
+
+  .ticket__info-section {
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+  }
+
+  .ticket__info-departure {
+    order: 2;
+    padding-right: 10px;
+  }
+
+  .ticket__info-arrival {
+    order: 3;
+    width: 50%;
+    padding-left: 10px;
+  }
+
+  .ticket__info-time {
+    margin-bottom: 10px;
+  }
+
+  .ticket__info-stops {
+    position: static;
+    top: 0;
+    left: 0;
+
+    order: 1;
+    width: 100%;
+    padding: 20px;
+
+    transform: none;
+  }
+
+  .ticket__info-stops-text::before {
+    left: 50%;
+
+    transform: translateX(-60%);
+  }
+
+  .ticket__info-stops-text::after {
+    right: 50px;
+    bottom: -1px;
+  }
 }
