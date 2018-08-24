@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 export default class Sidebar extends React.Component {
   constructor(props) {
@@ -9,19 +10,19 @@ export default class Sidebar extends React.Component {
 
   currencyData = [
     {
-      id: 1,
+      id: 0,
       class: 'sidebar__currency-label',
       text: 'RUB',
       value: 'rubles'
     },
     {
-      id: 2,
+      id: 1,
       class: 'sidebar__currency-label',
       text: 'USD',
       value: 'dollars'
     },
     {
-      id: 3,
+      id: 2,
       class: 'sidebar__currency-label',
       text: 'EUR',
       value: 'euro'
@@ -30,31 +31,31 @@ export default class Sidebar extends React.Component {
 
   stopsData = [
     {
-      id: 1,
+      id: 0,
       class: 'sidebar__stops-label',
       text: 'Все',
       value: 'all'
     },
     {
-      id: 2,
+      id: 1,
       class: 'sidebar__stops-label',
       text: 'Без пересадок',
       value: 0
     },
     {
-      id: 3,
+      id: 2,
       class: 'sidebar__stops-label',
       text: '1 пересадка',
       value: 1
     },
     {
-      id: 4,
+      id: 3,
       class: 'sidebar__stops-label',
       text: '2 пересадки',
       value: 2
     },
     {
-      id: 5,
+      id: 4,
       class: 'sidebar__stops-label',
       text: '3 пересадки',
       value: 3
@@ -62,17 +63,26 @@ export default class Sidebar extends React.Component {
   ];
 
   createRadioItem(item, name) {
+    const labelClasses = classNames({
+      [item.class]: true,
+      [item.class + '--first-col']: item.id === 0 || item.id === 3 || item.id === 6,
+      [item.class + '--second-col']: item.id === 1 || item.id === 4 || item.id === 7,
+      [item.class + '--third-col']: item.id === 2 || item.id === 5 || item.id === 8
+    });
     return (
-      <label key={item.id} className={item.class}>
+      <React.Fragment key={item.value}>
         <input
+          id={item.value}
           className='visually-hidden'
           type="radio" name={name}
           value={item.value}
-          defaultChecked={item.id === 1}
+          defaultChecked={item.id === 0}
           onChange={this.toggleRadio}
         />
-        {item.text}
-      </label>
+        <label htmlFor={item.value} key={item.id} className={labelClasses}>
+          {item.text}
+        </label>
+      </React.Fragment>
     )
   };
 
@@ -84,21 +94,24 @@ export default class Sidebar extends React.Component {
 
   createCheckboxItem(item) {
     return (
-      <label key={item.id} className={item.class}>
+      <React.Fragment key={item.value}>
         <input
+          id={item.value}
           className='visually-hidden'
           type="checkbox"
           name={item.value}
           onChange={this.toggleCheckbox}
         />
-        {item.text}
-      </label>
+        <label htmlFor={item.value} key={item.id} className={item.class}>
+          {item.text}
+        </label>
+      </React.Fragment>
     )
   };
 
   renderCheckboxList(data) {
     return data.map((item) => {
-      return this.createCheckboxItem(item);
+      return this.createCheckboxItem(item)
     });
   };
 
@@ -115,11 +128,13 @@ export default class Sidebar extends React.Component {
       <form className='sidebar'>
         <fieldset className='sidebar__fieldset'>
           <legend className='sidebar__legend'>Валюта</legend>
-          {this.renderRadioList(this.currencyData, 'currency')};
+          <div className='sidebar__currency-wrap'>
+            {this.renderRadioList(this.currencyData, 'currency')}
+          </div>
         </fieldset>
         <fieldset className='sidebar__fieldset'>
           <legend className='sidebar__legend'>Количество пересадок</legend>
-          {this.renderCheckboxList(this.stopsData)};
+          {this.renderCheckboxList(this.stopsData)}
         </fieldset>
       </form>
     );

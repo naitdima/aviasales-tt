@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from "prop-types"
 
 class Ticket extends React.Component {
   render() {
@@ -27,11 +26,21 @@ class Ticket extends React.Component {
       return price.rubles + '\u20BD'
     };
 
+    const getStops = (stops) => {
+      if (stops > 0) {
+        return stops === 1 ?
+          <p className='ticket__info-stops-text'>{stops}<br/>пересадка</p>
+          :
+          <p className='ticket__info-stops-text'>{stops}<br/>пересадки</p>
+      }
+      return <p className='ticket__info-stops-text'></p>
+    };
+
     return (
       <article className='ticket'>
         <section className='ticket__buy-section'>
           <img className='ticket__logo' src={'../img/' + carrier + '.png'} alt={carrier}/>
-          <a className='ticket__buy-btn' href='#buy'>Купить за {getPrice(price, currency)}</a>
+          <a className='ticket__buy-btn' href='#buy'>Купить<br/>за {getPrice(price, currency)}</a>
         </section>
         <section className='ticket__info-section'>
           <div className='ticket__info-departure'>
@@ -40,12 +49,7 @@ class Ticket extends React.Component {
             <time className='ticket__info-date  ticket__info-date--departure'>{departure_date}</time>
           </div>
           <div className='ticket__info-stops'>
-            {
-              stops === 1 ?
-              <p className='ticket__info-stops-text'>{stops}<br/>пересадка</p>
-              :
-              <p className='ticket__info-stops-text'>{stops}<br/>пересадки</p>
-            }
+            {getStops(stops)}
           </div>
           <div className='ticket__info-arrival'>
             <time className='ticket__info-time  ticket__info-time--arrival'>{arrival_time}</time>
@@ -57,21 +61,5 @@ class Ticket extends React.Component {
     );
   }
 }
-
-Ticket.propTypes = {
-  data: PropTypes.shape({
-    origin: PropTypes.string.isRequired,
-    origin_name: PropTypes.string.isRequired,
-    destination: PropTypes.string.isRequired,
-    destination_name: PropTypes.string.isRequired,
-    departure_date: PropTypes.string.isRequired,
-    departure_time: PropTypes.string.isRequired,
-    arrival_date: PropTypes.string.isRequired,
-    arrival_time: PropTypes.string.isRequired,
-    carrier: PropTypes.string.isRequired,
-    stops: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired
-  })
-};
 
 export default Ticket;

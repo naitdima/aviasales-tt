@@ -1,11 +1,7 @@
 import React from 'react'
 import Ticket from './Ticket'
-import PropTypes from 'prop-types'
 
 export default class Tickets extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   sortByPrice = (a, b, currency) => {
     return a.price[currency] - b.price[currency]
@@ -60,12 +56,8 @@ export default class Tickets extends React.Component {
   render() {
     return (
       <section className='tickets-list'>
-        {this.renderTickets()};
+        {this.renderTickets()}
       </section>
     )
   }
 }
-
-Tickets.propTypes = {
-  data: PropTypes.array.isRequired,
-};
