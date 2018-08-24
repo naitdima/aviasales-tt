@@ -127,13 +127,13 @@ export default class Sidebar extends React.Component {
     return (
       <form className='sidebar'>
         <fieldset className='sidebar__fieldset'>
-          <legend className='sidebar__legend'>Валюта</legend>
+          <legend className='sidebar__legend  sidebar__legend--currency'>Валюта</legend>
           <div className='sidebar__currency-wrap'>
             {this.renderRadioList(this.currencyData, 'currency')}
           </div>
         </fieldset>
         <fieldset className='sidebar__fieldset'>
-          <legend className='sidebar__legend'>Количество пересадок</legend>
+          <legend className='sidebar__legend  sidebar__legend--stops'>Количество пересадок</legend>
           {this.renderCheckboxList(this.stopsData)}
         </fieldset>
       </form>
