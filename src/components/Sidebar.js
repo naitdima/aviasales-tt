@@ -70,7 +70,7 @@ export default class Sidebar extends React.Component {
       [item.class + '--third-col']: item.id === 2 || item.id === 5 || item.id === 8
     });
     return (
-      <React.Fragment>
+      <React.Fragment key={item.value}>
         <input
           id={item.value}
           className='visually-hidden'
@@ -79,7 +79,7 @@ export default class Sidebar extends React.Component {
           defaultChecked={item.id === 0}
           onChange={this.toggleRadio}
         />
-        <label for={item.value} key={item.id} className={labelClasses}>
+        <label htmlFor={item.value} key={item.id} className={labelClasses}>
           {item.text}
         </label>
       </React.Fragment>
@@ -94,7 +94,7 @@ export default class Sidebar extends React.Component {
 
   createCheckboxItem(item) {
     return (
-      <React.Fragment>
+      <React.Fragment key={item.value}>
         <input
           id={item.value}
           className='visually-hidden'
@@ -102,7 +102,7 @@ export default class Sidebar extends React.Component {
           name={item.value}
           onChange={this.toggleCheckbox}
         />
-        <label for={item.value} key={item.id} className={item.class}>
+        <label htmlFor={item.value} key={item.id} className={item.class}>
           {item.text}
         </label>
       </React.Fragment>

@@ -349,6 +349,8 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
 }
 
 .ticket__info-stops-text {
+  display: block;
+  min-height: 24px;
   position: relative;
 
   margin: 0;

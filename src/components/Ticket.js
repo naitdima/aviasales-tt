@@ -26,6 +26,16 @@ class Ticket extends React.Component {
       return price.rubles + '\u20BD'
     };
 
+    const getStops = (stops) => {
+      if (stops > 0) {
+        return stops === 1 ?
+          <p className='ticket__info-stops-text'>{stops}<br/>пересадка</p>
+          :
+          <p className='ticket__info-stops-text'>{stops}<br/>пересадки</p>
+      }
+      return <p className='ticket__info-stops-text'></p>
+    };
+
     return (
       <article className='ticket'>
         <section className='ticket__buy-section'>
@@ -39,12 +49,7 @@ class Ticket extends React.Component {
             <time className='ticket__info-date  ticket__info-date--departure'>{departure_date}</time>
           </div>
           <div className='ticket__info-stops'>
-            {
-              stops === 1 ?
-              <p className='ticket__info-stops-text'>{stops}<br/>пересадка</p>
-              :
-              <p className='ticket__info-stops-text'>{stops}<br/>пересадки</p>
-            }
+            {getStops(stops)}
           </div>
           <div className='ticket__info-arrival'>
             <time className='ticket__info-time  ticket__info-time--arrival'>{arrival_time}</time>

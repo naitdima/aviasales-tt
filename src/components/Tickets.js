@@ -2,9 +2,6 @@ import React from 'react'
 import Ticket from './Ticket'
 
 export default class Tickets extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   sortByPrice = (a, b, currency) => {
     return a.price[currency] - b.price[currency]
