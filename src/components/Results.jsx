@@ -1,8 +1,10 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import Tickets from './Tickets'
+import PropTypes from 'prop-types'
 
 export default class Results extends React.Component {
+
   constructor(props) {
     super(props);
     this.onToggleRadio = this.onToggleRadio.bind(this);
@@ -14,10 +16,9 @@ export default class Results extends React.Component {
   }
 
   onToggleRadio(e) {
-    const currency = e.target.value;
     this.setState(
       {
-        currency: currency
+        currency: e.target.value
       }
     );
   };
@@ -27,12 +28,10 @@ export default class Results extends React.Component {
     const stateKey = e.target.name;
     let stops = this.state.stops;
 
-    const addItemArray = (arr, value) => {
-      arr.push(value)
-    };
+    const addItemArray = (arr, value) => arr.push(value);
 
     const removeItemArray = (arr, value) => {
-      return arr.forEach(function (item, i, arr) {
+      return arr.forEach((item, i, arr) => {
         if (item === value) {
           arr.splice(i, 1);
         }
@@ -61,3 +60,7 @@ export default class Results extends React.Component {
     )
   }
 }
+
+Results.propTypes = {
+  isLoading: PropTypes.bool.isRequired
+};

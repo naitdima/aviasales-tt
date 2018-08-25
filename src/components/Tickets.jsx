@@ -1,16 +1,17 @@
 import React from 'react'
 import Ticket from './Ticket'
+import PropTypes from 'prop-types'
 
 export default class Tickets extends React.Component {
 
-  sortByPrice = (a, b, currency) => {
+  sortByPrice(a, b, currency) {
     return a.price[currency] - b.price[currency]
   };
 
-  filterByStops = (item, stops) => {
+  filterByStops(item, stops) {
     const checkArray = (array, value) => {
       for (let i = 0; i < array.length; i++) {
-        let item = array[i] === 'all' ? array[i] : Number(array[i]);
+        const item = array[i] === 'all' ? array[i] : Number(array[i]);
         if (item === value) {
           return true
         }
@@ -30,7 +31,7 @@ export default class Tickets extends React.Component {
     return true
   };
 
-  sortTickets = (data, currency, stops) => {
+  sortTickets(data, currency, stops) {
     if (data.length) {
       return data.sort((a, b) => {
             return this.sortByPrice(a, b, currency)
@@ -41,7 +42,7 @@ export default class Tickets extends React.Component {
     return data
   };
 
-  renderTickets = () => {
+  renderTickets() {
     const currency = this.props;
     const data = this.sortTickets(this.props.data, this.props.currency, this.props.stops);
     if (data.length) {
@@ -61,3 +62,9 @@ export default class Tickets extends React.Component {
     )
   }
 }
+
+Tickets.propTypes = {
+  currency: PropTypes.string.isRequired,
+  stops: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired
+};

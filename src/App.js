@@ -3,7 +3,7 @@ import Header from './components/Header'
 import Results from './components/Results'
 import './App.css';
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     tickets: null,
     isLoading: false,
@@ -32,5 +32,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;

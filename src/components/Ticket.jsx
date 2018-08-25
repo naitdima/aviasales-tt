@@ -1,6 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-class Ticket extends React.Component {
+export default class Ticket extends React.Component {
+
   render() {
     const {
       origin,
@@ -18,12 +20,14 @@ class Ticket extends React.Component {
     const {currency} = this.props.currency;
 
     const getPrice = (price, currency) => {
-      if (currency === 'dollars') {
-        return price.dollars + '\u0024'
-      } else if (currency === 'euro') {
-        return price.euro + '\u20AC'
+      switch (currency) {
+        case 'dollars':
+          return price.dollars + '\u0024';
+        case 'euro':
+          return price.euro + '\u20AC';
+        default:
+          return price.rubles + '\u20BD';
       }
-      return price.rubles + '\u20BD'
     };
 
     const getStops = (stops) => {
@@ -62,4 +66,18 @@ class Ticket extends React.Component {
   }
 }
 
-export default Ticket;
+Ticket.propTypes = {
+  data: PropTypes.shape({
+    origin: PropTypes.string.isRequired,
+    origin_name: PropTypes.string.isRequired,
+    destination: PropTypes.string.isRequired,
+    destination_name: PropTypes.string.isRequired,
+    departure_date: PropTypes.string.isRequired,
+    departure_time: PropTypes.string.isRequired,
+    arrival_date: PropTypes.string.isRequired,
+    arrival_time: PropTypes.string.isRequired,
+    carrier: PropTypes.string.isRequired,
+    stops: PropTypes.number.isRequired,
+    price: PropTypes.object.isRequired
+  })
+};

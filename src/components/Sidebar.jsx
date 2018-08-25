@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export default class Sidebar extends React.Component {
+
   constructor(props) {
     super(props);
     this.toggleRadio = this.toggleRadio.bind(this);
@@ -71,15 +73,16 @@ export default class Sidebar extends React.Component {
     });
     return (
       <React.Fragment key={item.value}>
-        <input
-          id={item.value}
-          className='visually-hidden'
-          type="radio" name={name}
-          value={item.value}
-          defaultChecked={item.id === 0}
-          onChange={this.toggleRadio}
+        <input className='visually-hidden'
+               id={item.value}
+               type="radio" name={name}
+               onChange={this.toggleRadio}
+               value={item.value}
+               defaultChecked={item.id === 0}
         />
-        <label htmlFor={item.value} key={item.id} className={labelClasses}>
+        <label key={item.id}
+               className={labelClasses}
+               htmlFor={item.value}>
           {item.text}
         </label>
       </React.Fragment>
@@ -87,22 +90,21 @@ export default class Sidebar extends React.Component {
   };
 
   renderRadioList (data, name) {
-    return data.map((item) => {
-      return this.createRadioItem(item, name);
-    });
+    return data.map(item => this.createRadioItem(item, name))
   };
 
   createCheckboxItem(item) {
     return (
       <React.Fragment key={item.value}>
-        <input
-          id={item.value}
-          className='visually-hidden'
-          type="checkbox"
-          name={item.value}
-          onChange={this.toggleCheckbox}
+        <input className='visually-hidden'
+               id={item.value}
+               type="checkbox"
+               onChange={this.toggleCheckbox}
+               name={item.value}
         />
-        <label htmlFor={item.value} key={item.id} className={item.class}>
+        <label className={item.class}
+               key={item.id}
+               htmlFor={item.value}>
           {item.text}
         </label>
       </React.Fragment>
@@ -110,18 +112,12 @@ export default class Sidebar extends React.Component {
   };
 
   renderCheckboxList(data) {
-    return data.map((item) => {
-      return this.createCheckboxItem(item)
-    });
+    return data.map(item => this.createCheckboxItem(item))
   };
 
-  toggleRadio(e) {
-    this.props.onToggleRadio(e)
-  };
+  toggleRadio(e) { this.props.onToggleRadio(e) };
 
-  toggleCheckbox(e) {
-    this.props.onToggleCheckbox(e)
-  };
+  toggleCheckbox(e) { this.props.onToggleCheckbox(e) };
 
   render() {
     return (
@@ -140,3 +136,8 @@ export default class Sidebar extends React.Component {
     );
   }
 }
+
+Sidebar.propTypes = {
+  onToggleRadio: PropTypes.func.isRequired,
+  onToggleCheckbox: PropTypes.func.isRequired
+};
