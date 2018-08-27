@@ -8,6 +8,7 @@ export default class Sidebar extends React.Component {
     super(props);
     this.toggleRadio = this.toggleRadio.bind(this);
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
+    this.checkOnlyThisCheckbox = this.checkOnlyThisCheckbox.bind(this);
   }
 
   currencyData = [
@@ -42,25 +43,25 @@ export default class Sidebar extends React.Component {
       id: 1,
       class: 'sidebar__stops-label',
       text: 'Без пересадок',
-      value: 0
+      value: 'none'
     },
     {
       id: 2,
       class: 'sidebar__stops-label',
       text: '1 пересадка',
-      value: 1
+      value: 'one'
     },
     {
       id: 3,
       class: 'sidebar__stops-label',
       text: '2 пересадки',
-      value: 2
+      value: 'two'
     },
     {
       id: 4,
       class: 'sidebar__stops-label',
       text: '3 пересадки',
-      value: 3
+      value: 'three'
     }
   ];
 
@@ -101,11 +102,17 @@ export default class Sidebar extends React.Component {
                type="checkbox"
                onChange={this.toggleCheckbox}
                name={item.value}
+               checked={this.props.stops[`${item.value}`]}
         />
         <label className={item.class}
                key={item.id}
                htmlFor={item.value}>
           {item.text}
+          {
+            item.value !== 'all'
+            &&
+            <span key={item.value} onClick={this.checkOnlyThisCheckbox} className='sidebar__stops-only'>Только</span>
+          }
         </label>
       </React.Fragment>
     )
@@ -118,6 +125,8 @@ export default class Sidebar extends React.Component {
   toggleRadio(e) { this.props.onToggleRadio(e) };
 
   toggleCheckbox(e) { this.props.onToggleCheckbox(e) };
+
+  checkOnlyThisCheckbox (e) { this.props.checkOnlyThisCheckbox(e) };
 
   render() {
     return (
@@ -139,5 +148,7 @@ export default class Sidebar extends React.Component {
 
 Sidebar.propTypes = {
   onToggleRadio: PropTypes.func.isRequired,
-  onToggleCheckbox: PropTypes.func.isRequired
+  onToggleCheckbox: PropTypes.func.isRequired,
+  checkOnlyThisCheckbox: PropTypes.func.isRequired,
+  stops: PropTypes.object.isRequired
 };

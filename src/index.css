@@ -168,7 +168,7 @@ input[type="radio"]:checked + label.sidebar__currency-label {
 
   display: block;
   padding-top: 7px;
-  padding-right: 15px;
+  padding-right: 65px;
   padding-bottom: 8px;
   padding-left: 45px;
 
@@ -176,6 +176,27 @@ input[type="radio"]:checked + label.sidebar__currency-label {
   line-height: 20px;
 
   cursor: pointer;
+}
+
+.sidebar__stops-only {
+  position: absolute;
+  top: 0;
+  right: 15px;
+
+  display: none;
+
+  font-size: 11px;
+  line-height: 35px;
+  color: #2196f3;
+  text-transform: uppercase;
+}
+
+.sidebar__stops-only:hover {
+  color: #ff6d00;
+}
+
+.sidebar__stops-label:hover .sidebar__stops-only {
+  display: inline;
 }
 
 .sidebar__stops-label:hover,
@@ -441,6 +462,10 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
 
     border: 1px solid #d2d5d6;
     border-radius: 0;
+  }
+
+  .sidebar__stops-label:hover .sidebar__stops-only {
+    display: none;
   }
 
   .sidebar__currency-label:nth-child(2) {

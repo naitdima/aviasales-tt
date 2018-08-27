@@ -4,39 +4,41 @@ import PropTypes from 'prop-types'
 
 export default class Tickets extends React.Component {
 
-  sortByPrice(a, b, currency) {
-    return a.price[currency] - b.price[currency]
-  };
+  sortTickets(data, currency, stops) {
 
-  filterByStops(item, stops) {
-    const checkArray = (array, value) => {
-      for (let i = 0; i < array.length; i++) {
-        const item = array[i] === 'all' ? array[i] : Number(array[i]);
-        if (item === value) {
-          return true
+    const sortByPrice = (a, b, currency) => {
+      return a.price[currency] - b.price[currency]
+    };
+
+    const filterByStops = (item, stops) => {
+      const getItemStopsValue = (item) => {
+        switch(item.stops) {
+          case 0:
+            return 'none';
+          case 1:
+            return 'one';
+          case 2:
+            return 'two';
+          case 3:
+            return 'three';
+          default:
+            return item.stops
         }
+      };
+
+      if (stops.all === true) {
+        return true
+      } else if (stops[`${getItemStopsValue(item)}`] === true) {
+        return true
       }
       return false
     };
 
-    if (stops.length) {
-      if (checkArray(stops, 'all')) {
-        return true
-      } else if (checkArray(stops, item.stops)) {
-        return true
-      } else {
-        return false
-      }
-    }
-    return true
-  };
-
-  sortTickets(data, currency, stops) {
     if (data.length) {
       return data.sort((a, b) => {
-            return this.sortByPrice(a, b, currency)
+            return sortByPrice(a, b, currency)
           }).filter((item) => {
-        return this.filterByStops(item, stops)
+        return filterByStops(item, stops)
           })
     }
     return data
@@ -45,6 +47,7 @@ export default class Tickets extends React.Component {
   renderTickets() {
     const currency = this.props;
     const data = this.sortTickets(this.props.data, this.props.currency, this.props.stops);
+
     if (data.length) {
       return data.map(function (item) {
             return <Ticket key={item.id} data={item} currency={currency}/>
@@ -65,6 +68,6 @@ export default class Tickets extends React.Component {
 
 Tickets.propTypes = {
   currency: PropTypes.string.isRequired,
-  stops: PropTypes.array.isRequired,
+  stops: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired
 };
