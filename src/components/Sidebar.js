@@ -11,60 +11,6 @@ export default class Sidebar extends React.Component {
     this.checkOnlyThisCheckbox = this.checkOnlyThisCheckbox.bind(this);
   }
 
-  currencyData = [
-    {
-      id: 0,
-      class: 'sidebar__currency-label',
-      text: 'RUB',
-      value: 'rubles'
-    },
-    {
-      id: 1,
-      class: 'sidebar__currency-label',
-      text: 'USD',
-      value: 'dollars'
-    },
-    {
-      id: 2,
-      class: 'sidebar__currency-label',
-      text: 'EUR',
-      value: 'euro'
-    }
-  ];
-
-  stopsData = [
-    {
-      id: 0,
-      class: 'sidebar__stops-label',
-      text: 'Все',
-      value: 'all'
-    },
-    {
-      id: 1,
-      class: 'sidebar__stops-label',
-      text: 'Без пересадок',
-      value: 'none'
-    },
-    {
-      id: 2,
-      class: 'sidebar__stops-label',
-      text: '1 пересадка',
-      value: 'one'
-    },
-    {
-      id: 3,
-      class: 'sidebar__stops-label',
-      text: '2 пересадки',
-      value: 'two'
-    },
-    {
-      id: 4,
-      class: 'sidebar__stops-label',
-      text: '3 пересадки',
-      value: 'three'
-    }
-  ];
-
   createRadioItem(item, name) {
     const labelClasses = classNames({
       [item.class]: true,
@@ -129,17 +75,72 @@ export default class Sidebar extends React.Component {
   checkOnlyThisCheckbox (e) { this.props.checkOnlyThisCheckbox(e) };
 
   render() {
+
+    const currencyData = [
+      {
+        id: 0,
+        class: 'sidebar__currency-label',
+        text: 'RUB',
+        value: 'rubles'
+      },
+      {
+        id: 1,
+        class: 'sidebar__currency-label',
+        text: 'USD',
+        value: 'dollars'
+      },
+      {
+        id: 2,
+        class: 'sidebar__currency-label',
+        text: 'EUR',
+        value: 'euro'
+      }
+    ];
+
+    const stopsData = [
+      {
+        id: 0,
+        class: 'sidebar__stops-label',
+        text: 'Все',
+        value: 'all'
+      },
+      {
+        id: 1,
+        class: 'sidebar__stops-label',
+        text: 'Без пересадок',
+        value: 'none'
+      },
+      {
+        id: 2,
+        class: 'sidebar__stops-label',
+        text: '1 пересадка',
+        value: 'one'
+      },
+      {
+        id: 3,
+        class: 'sidebar__stops-label',
+        text: '2 пересадки',
+        value: 'two'
+      },
+      {
+        id: 4,
+        class: 'sidebar__stops-label',
+        text: '3 пересадки',
+        value: 'three'
+      }
+    ];
+
     return (
       <form className='sidebar'>
         <fieldset className='sidebar__fieldset  sidebar__fieldset--currency'>
           <legend className='sidebar__legend  sidebar__legend--currency'>Валюта</legend>
           <div className='sidebar__currency-wrap'>
-            {this.renderRadioList(this.currencyData, 'currency')}
+            {this.renderRadioList(currencyData, 'currency')}
           </div>
         </fieldset>
         <fieldset className='sidebar__fieldset  sidebar__fieldset--stops'>
           <legend className='sidebar__legend  sidebar__legend--stops'>Количество пересадок</legend>
-          {this.renderCheckboxList(this.stopsData)}
+          {this.renderCheckboxList(stopsData)}
         </fieldset>
       </form>
     );

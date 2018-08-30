@@ -1,17 +1,19 @@
 import React from 'react'
-import Header from './components/Header'
-import Results from './components/Results'
-import './App.css';
+import Header from './Header'
+import Results from './Results'
 
 export default class App extends React.Component {
-  state = {
-    tickets: null,
-    isLoading: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      tickets: null,
+      isLoading: false,
+    }
+  }
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch('http://localhost:3000/data/tickets.json')
+    fetch('public/data/tickets.json')
     .then(response => {
       return response.json()
     })

@@ -43,7 +43,7 @@ export default class Ticket extends React.Component {
     return (
       <article className='ticket'>
         <section className='ticket__buy-section'>
-          <img className='ticket__logo' src={'../img/' + carrier + '.png'} alt={carrier}/>
+          <img className='ticket__logo' src={'./public/img/' + carrier + '.png'} alt={carrier}/>
           <a className='ticket__buy-btn' href='#buy'>Купить<br/>за {getPrice(price, currency)}</a>
         </section>
         <section className='ticket__info-section'>
