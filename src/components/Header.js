@@ -5,7 +5,7 @@ export default class Header extends React.Component {
     return (
       <header className='page-header'>
         <a>
-          <img className='page-header__logo' src='./public/img/logo.svg' width='60' height='60' alt='logo'/>
+          <img className='page-header__logo' src='./img/logo.svg' width='60' height='60' alt='logo'/>
         </a>
       </header>
     )
