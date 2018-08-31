@@ -82,10 +82,10 @@ img {
   padding: 0;
 
   border: none;
-}
 
-.sidebar__fieldset:last-child {
-  margin-bottom: 0;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .sidebar__legend {
@@ -98,10 +98,10 @@ img {
   line-height: 19px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
 
-.sidebar__legend--stops {
-  margin-bottom: 8px;
+  &--stops {
+    margin-bottom: 8px;
+  }
 }
 
 .sidebar__currency-wrap {
@@ -125,6 +125,38 @@ img {
   border: 1px solid #d2d5d6;
   border-radius: 5px;
   cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: #f2fcff;
+    border-color: #64b5f5;
+  }
+
+  &--first-col {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &--second-col {
+    border-radius: 0;
+  }
+
+  &--third-col {
+    border: #d2d5d6 1px solid;
+    border-left: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &--third-col:hover {
+    background-color: #f2fcff;
+    border-color: #64b5f5;
+  }
 }
 
 input[type="radio"]:checked + label.sidebar__currency-label {
@@ -132,35 +164,6 @@ input[type="radio"]:checked + label.sidebar__currency-label {
 
   background-color: #2196f3;
   border: none;
-}
-
-.sidebar__currency-label:hover,
-.sidebar__currency-label:active {
-  background-color: #f2fcff;
-  border-color: #64b5f5;
-}
-
-.sidebar__currency-label--first-col {
-  border-right: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.sidebar__currency-label--second-col {
-  border-radius: 0;
-}
-
-.sidebar__currency-label--third-col {
-  border: #d2d5d6 1px solid;
-  border-left: 0;
-  border-radius: 5px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.sidebar__currency-label--third-col:hover {
-  background-color: #f2fcff;
-  border-color: #64b5f5;
 }
 
 .sidebar__stops-label {
@@ -176,6 +179,44 @@ input[type="radio"]:checked + label.sidebar__currency-label {
   line-height: 20px;
 
   cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: #f1fcff;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 16px;
+
+    width: 20px;
+    height: 19px;
+
+    border: 1px solid #d2d5d6;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  &:hover::before {
+    border-color: #2196f3;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 15px;
+
+    display: none;
+    width: 20px;
+    height: 20px;
+
+    background-image: url("./img/check.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 }
 
 .sidebar__stops-only {
@@ -189,57 +230,19 @@ input[type="radio"]:checked + label.sidebar__currency-label {
   line-height: 35px;
   color: #2196f3;
   text-transform: uppercase;
-}
 
-.sidebar__stops-only:hover {
-  color: #ff6d00;
+  &:hover {
+    color: #ff6d00;
+  }
 }
 
 .sidebar__stops-label:hover .sidebar__stops-only {
   display: inline;
 }
 
-.sidebar__stops-label:hover,
-.sidebar__stops-label:active {
-  background-color: #f1fcff;
-}
-
-.sidebar__stops-label::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 16px;
-
-  width: 20px;
-  height: 19px;
-
-  border: 1px solid #d2d5d6;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.sidebar__stops-label:hover::before {
-  border-color: #2196f3;
-}
-
 input[type="checkbox"]:checked + label.sidebar__stops-label::before {
   background-color: #f2fcff;
   border-color: #2196f3;
-}
-
-.sidebar__stops-label::after {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 15px;
-
-  display: none;
-  width: 20px;
-  height: 20px;
-
-  background-image: url("./img/check.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
 }
 
 input[type="checkbox"]:checked + label.sidebar__stops-label::after {
@@ -293,12 +296,12 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
   background-color: #ff6d00;
   border-radius: 5px;
   box-shadow: #d64d08 0 1px 0 0, #000000 0 2px 1px 0;
-}
 
-.ticket__buy-btn:hover,
-.ticket__buy-btn:active {
-  background-color: #ff8124;
-  box-shadow: #d64d08 0 1px 0 0, #000000 0 1px 5px 0;
+  &:hover,
+  &:active {
+    background-color: #ff8124;
+    box-shadow: #d64d08 0 1px 0 0, #000000 0 1px 5px 0;
+  }
 }
 
 .ticket__info-section {
@@ -331,14 +334,14 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
   font-size: 32px;
   line-height: 26px;
   color: #4a4a4a;
-}
 
-.ticket__info-time--departure {
-  text-align: left;
-}
+  &--departure {
+    text-align: left;
+  }
 
-.ticket__info-time--arrival {
-  text-align: right;
+  &--arrival {
+    text-align: right;
+  }
 }
 
 .ticket__info-location {
@@ -348,14 +351,14 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
   font-size: 12px;
   line-height: 18px;
   color: #4a4a4a;
-}
 
-.ticket__info-location--origin {
-  text-align: left;
-}
+  &--origin {
+    text-align: left;
+  }
 
-.ticket__info-location--destination {
-  text-align: right;
+  &--destination {
+    text-align: right;
+  }
 }
 
 .ticket__info-date {
@@ -364,14 +367,14 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
   font-size: 12px;
   line-height: 18px;
   color: #8b9497;
-}
 
-.ticket__info-date--departure {
-  text-align: left;
-}
+  &--departure {
+    text-align: left;
+  }
 
-.ticket__info-date--arrival {
-  text-align: right;
+  &--arrival {
+    text-align: right;
+  }
 }
 
 .ticket__info-stops {
@@ -445,8 +448,10 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
     margin: 0;
   }
 
-  .sidebar__legend--currency {
-    margin-bottom: 17px;
+  .sidebar__legend {
+    &--currency {
+      margin-bottom: 17px;
+    }
   }
 
   .sidebar__currency-wrap {
@@ -462,20 +467,20 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
 
     border: 1px solid #d2d5d6;
     border-radius: 0;
+
+    &:nth-child(2) {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
   }
 
   .sidebar__stops-label:hover .sidebar__stops-only {
     display: none;
-  }
-
-  .sidebar__currency-label:nth-child(2) {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-
-  .sidebar__currency-label:last-child {
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
   }
 }
 
@@ -501,8 +506,10 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
     margin-bottom: 30px;
   }
 
-  .sidebar__legend--currency {
-    margin-bottom: 10px;
+  .sidebar__legend {
+    &--currency {
+      margin-bottom: 10px;
+    }
   }
 
   .sidebar__currency-wrap {
@@ -511,14 +518,16 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
     padding-left: 15px;
   }
 
-  .sidebar__currency-label:nth-child(2) {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 0;
-  }
+  .sidebar__currency-label {
+    &:nth-child(2) {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 0;
+    }
 
-  .sidebar__currency-label:last-child {
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 0;
+    &:last-child {
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 0;
+    }
   }
 
   .sidebar__currency-label {
@@ -530,24 +539,24 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
 
     border: 1px solid #d2d5d6;
     border-radius: 5px;
-  }
 
-  .sidebar__currency-label--first-col {
-    border-right: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+    &--first-col {
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-  .sidebar__currency-label--second-col {
-    border-radius: 0;
-  }
+    &--second-col {
+      border-radius: 0;
+    }
 
-  .sidebar__currency-label--third-col {
-    border: #d2d5d6 1px solid;
-    border-left: 0;
-    border-radius: 5px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    &--third-col {
+      border: #d2d5d6 1px solid;
+      border-left: 0;
+      border-radius: 5px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 
   .tickets-list {
@@ -614,14 +623,16 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
     transform: none;
   }
 
-  .ticket__info-stops-text::before {
-    left: 50%;
+  .ticket__info-stops-text {
+    &::before {
+      left: 50%;
 
-    transform: translateX(-60%);
-  }
+      transform: translateX(-60%);
+    }
 
-  .ticket__info-stops-text::after {
-    right: 50px;
-    bottom: -1px;
+    &::after {
+      right: 50px;
+      bottom: -1px;
+    }
   }
 }
