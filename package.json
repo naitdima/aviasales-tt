@@ -2,7 +2,8 @@
   "name": "aviasales-tt",
   "dependencies": {
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "whatwg-fetch": "^2.0.4"
   },
   "scripts": {
     "dev": "webpack-dev-server --mode development --hot --open",

@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: ['whatwg-fetch', './src/index.js'],
   output:{
     path: path.resolve(__dirname, 'build'),
     filename: 'index.[hash].js'
