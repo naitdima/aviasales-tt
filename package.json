@@ -1,6 +1,7 @@
 {
   "name": "aviasales-tt",
   "dependencies": {
+    "promise-polyfill": "8.1.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "whatwg-fetch": "^2.0.4"

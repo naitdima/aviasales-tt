@@ -13,7 +13,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-      fetch('data/tickets.json')
+    fetch('data/tickets.json')
     .then(response => {
       return response.json()
     })
