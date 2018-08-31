@@ -237,7 +237,7 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::before {
   width: 20px;
   height: 20px;
 
-  background-image: url("./public/img/check.svg");
+  background-image: url("./img/check.svg");
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -419,7 +419,7 @@ input[type="checkbox"]:checked + label.sidebar__stops-label::after {
   width: 13px;
   height: 14px;
 
-  background-image: url("./public/img/plane.svg");
+  background-image: url("./img/plane.svg");
   background-repeat: no-repeat;
 }
 
