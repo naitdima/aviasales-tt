@@ -33,9 +33,9 @@ export default class Ticket extends React.Component {
     const getStops = (stops) => {
       if (stops > 0) {
         return stops === 1 ?
-          <p className='ticket__info-stops-text'>{stops}<br/>пересадка</p>
+          <p className='ticket__info-stops-text'>{stops} пересадка</p>
           :
-          <p className='ticket__info-stops-text'>{stops}<br/>пересадки</p>
+          <p className='ticket__info-stops-text'>{stops} пересадки</p>
       }
       return <p className='ticket__info-stops-text'></p>
     };
